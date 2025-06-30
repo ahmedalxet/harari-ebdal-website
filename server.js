@@ -310,7 +310,7 @@ app.use(cors({
 }));
 
 // Serve static files from public directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Special middleware for webhook (must be raw)
 app.use('/api/webhook', express.raw({type: 'application/json'}));
@@ -393,6 +393,10 @@ app.get('/api/test-email', async (req, res) => {
       timestamp: new Date().toISOString()
     });
   }
+});
+// Serve frontend index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Serve admin page
