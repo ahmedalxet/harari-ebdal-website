@@ -352,7 +352,7 @@ app.get('/api/test-email', async (req, res) => {
   if (isConnected) {
     // Try sending a test email
     try {
-      const transporter = createTransport();
+      const transporter = createEmailTransporter();
       await transporter.sendMail({
         from: `"Harari EBDAL Test" <${process.env.BREVO_EMAIL}>`,
         to: process.env.ADMIN_EMAIL || process.env.BREVO_EMAIL,
