@@ -110,7 +110,7 @@ const createEmailTransporter = () => {
   console.log('🔧 Creating Brevo SMTP transporter...');
   
   // Brevo SMTP configuration with correct credentials
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     host: 'smtp-relay.brevo.com',
     port: 587,
     secure: false, // Use STARTTLS
@@ -352,7 +352,7 @@ app.get('/api/test-email', async (req, res) => {
   if (isConnected) {
     // Try sending a test email
     try {
-      const transporter = createEmailTransporter();
+      const transporter = createTransport();
       await transporter.sendMail({
         from: `"Harari EBDAL Test" <${process.env.BREVO_EMAIL}>`,
         to: process.env.ADMIN_EMAIL || process.env.BREVO_EMAIL,
