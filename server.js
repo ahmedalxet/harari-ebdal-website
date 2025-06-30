@@ -396,12 +396,12 @@ app.get('/api/test-email', async (req, res) => {
 });
 // Serve frontend index.html for all non-API routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // Serve admin page
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'admin.html'));
 });
 
 // Admin Authentication Routes
