@@ -110,7 +110,7 @@ const createEmailTransporter = () => {
   console.log('🔧 Creating Brevo SMTP transporter...');
   
   // Brevo SMTP configuration with correct credentials
-  const transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransporter({
     host: 'smtp-relay.brevo.com',
     port: 587,
     secure: false, // Use STARTTLS
@@ -301,15 +301,20 @@ const sendWelcomeEmail = async (subscriberEmail) => {
   }
 };
 
-// CORS Configuration - Allow all origins for development
+// CORS Configuration - Allow all origins for development, specific for production
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.use(cors({
-  origin: '*',
+  origin: isProduction ? [
+    process.env.FRONTEND_URL,
+    process.env.RAILWAY_STATIC_URL ? `https://${process.env.RAILWAY_STATIC_URL}` : null
+  ].filter(Boolean) : '*',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Serve static files from public directory
+// Serve static files from dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Special middleware for webhook (must be raw)
@@ -393,15 +398,6 @@ app.get('/api/test-email', async (req, res) => {
       timestamp: new Date().toISOString()
     });
   }
-});
-// Serve frontend index.html for all non-API routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-// Serve admin page
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'admin.html'));
 });
 
 // Admin Authentication Routes
@@ -710,6 +706,7 @@ app.get('/api/checkout-session/:sessionId', async (req, res) => {
 });
 
 // Get donation statistics
+// Get donation statistics
 app.get('/api/donations/stats', async (req, res) => {
   try {
     const donations = await readJsonFile(DONATIONS_FILE);
@@ -729,6 +726,31 @@ app.get('/api/donations/stats', async (req, res) => {
   }
 });
 
+// IMPORTANT: Admin route MUST come BEFORE the catch-all route
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'admin.html'), (err) => {
+    if (err) {
+      console.error('Error serving admin.html:', err);
+      res.status(404).send('Admin page not found. Make sure admin.html exists in the dist folder.');
+    }
+  });
+});
+
+// Catch-all handler for SPA - MUST be last
+app.get('*', (req, res) => {
+  // Don't catch API routes
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API route not found' });
+  }
+  
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'), (err) => {
+    if (err) {
+      console.error('Error serving index.html:', err);
+      res.status(500).send('Error loading page');
+    }
+  });
+});
+
 // Error handling middleware
 app.use((error, req, res, next) => {
   console.error('Server error:', error);
@@ -738,14 +760,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-// 404 handler
-app.all('*', (req, res) => {
-  res.status(404).json({ error: 'Route not found' });
-});
-
 // Initialize data storage and start server
-// Replace lines ~450-458 in your server.js with this:
-
 const startServer = async () => {
   await initializeDataStorage();
   
@@ -762,11 +777,13 @@ const startServer = async () => {
   // Dynamic base URL for logging
   const baseUrl = process.env.RAILWAY_STATIC_URL 
     ? `https://${process.env.RAILWAY_STATIC_URL}`
+    : process.env.RENDER_EXTERNAL_URL
+    ? process.env.RENDER_EXTERNAL_URL
     : process.env.FRONTEND_URL 
     ? process.env.FRONTEND_URL
     : `http://localhost:${PORT}`;
   
-  app.listen(PORT, '0.0.0.0', () => { // Important: bind to 0.0.0.0 for Railway
+  app.listen(PORT, '0.0.0.0', () => { // Important: bind to 0.0.0.0 for deployment
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📍 Health check: ${baseUrl}/health`);
@@ -775,7 +792,7 @@ const startServer = async () => {
     console.log(`📧 Newsletter API: ${baseUrl}/api/subscribe`);
     console.log(`💳 Stripe API: ${baseUrl}/api/create-checkout-session`);
     console.log(`💾 Using file-based storage in ./data/ directory`);
-    console.log(`🔑 Admin password: ${process.env.ADMIN_SECRET}`);
+    console.log(`🔑 Admin password: ${process.env.ADMIN_SECRET ? 'Set' : 'NOT SET'}`);
     console.log(`📧 Email status: ${emailWorking ? '✅ Working' : '❌ Not configured'}`);
   });
 };
