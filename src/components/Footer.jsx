@@ -117,7 +117,7 @@ const Footer = () => {
             <div className="space-y-2 mb-4">
               <p className="text-gray-300">
                 <span className="text-harari">Phone:</span> 
-                <a href="tel:+(416)-474-8593" className="hover:text-harari transition-colors ml-1">
+                <a href="tel:++1(647)-557-2633" className="hover:text-harari transition-colors ml-1">
                   +1(647)-557-2633
                 </a>
               </p>
