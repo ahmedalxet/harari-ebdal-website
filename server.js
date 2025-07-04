@@ -787,11 +787,7 @@ const startServer = async () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📍 Health check: ${baseUrl}/health`);
-    console.log(`🧪 Email test: ${baseUrl}/api/test-email`);
     console.log(`👨‍💼 Admin portal: ${baseUrl}/admin`);
-    console.log(`📧 Newsletter API: ${baseUrl}/api/subscribe`);
-    console.log(`💳 Stripe API: ${baseUrl}/api/create-checkout-session`);
-    console.log(`💾 Using file-based storage in ./data/ directory`);
     console.log(`🔑 Admin password: ${process.env.ADMIN_SECRET ? 'Set' : 'NOT SET'}`);
     console.log(`📧 Email status: ${emailWorking ? '✅ Working' : '❌ Not configured'}`);
   });

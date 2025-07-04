@@ -96,7 +96,7 @@ const Donation = () => {
             {/* Custom Amount Input */}
             <div className="mb-8 max-w-md mx-auto">
               <label htmlFor="donation-amount" className="block text-sm font-medium text-amber-800 mb-2">
-                Enter your amount (USD)
+                Enter your amount (CAD)
               </label>
               <div className="relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -114,7 +114,7 @@ const Donation = () => {
                   step="1"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center">
-                  <span className="text-amber-500 pr-3 sm:text-sm">USD</span>
+                  <span className="text-amber-500 pr-3 sm:text-sm">CAD</span>
                 </div>
               </div>
             </div>

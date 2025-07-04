@@ -39,7 +39,7 @@ const Contact = () => {
   }
 
   const handlePhoneCall = () => {
-    window.location.href = 'tel:+1(416)-474-8593'
+    window.location.href = 'tel:(647)-557-4363'
   }
 
   const closeModal = () => {
@@ -89,7 +89,7 @@ const Contact = () => {
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-harari mb-6 cursor-pointer hover:text-amber-800 transition-colors duration-300"
             onClick={handlePhoneCall}
           >
-            +(416)-474-8593
+            
           </h3>
           
           <p className="text-lg text-gray-600 mb-10 max-w-lg mx-auto">
@@ -131,7 +131,7 @@ const Contact = () => {
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Contact Options</h3>
                 <div className="space-y-3">
                   <a 
-                    href="https://wa.me/4164748593" 
+                    href="https://wa.me/+16475572633" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center p-3 bg-green-100 rounded-lg hover:bg-green-200 transition-colors"
@@ -143,7 +143,7 @@ const Contact = () => {
                     </div>
                   </a>
                   <a 
-                    href="sms:+4164748593" 
+                    href="sms:+1(647)557-2633" 
                     className="flex items-center p-3 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors"
                   >
                     <span className="text-2xl mr-3">💬</span>
