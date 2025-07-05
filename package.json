@@ -10,7 +10,10 @@
     "server": "nodemon server.js",
     "dev:full": "concurrently \"npm run dev\" \"npm run server\"",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "fix": "eslint . --ext js,jsx --fix"
+    "fix": "eslint . --ext js,jsx --fix",
+    "start": "npm run build && npm run preview",
+    "deploy": "node scripts/deploy.js",
+    "clean:server": "echo 'Removing old server files...' && rm -rf server.js routes/ utils/emailService.js && echo 'Server files removed. You are now using serverless functions only.'"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -31,12 +34,13 @@
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "nodemon": "^3.1.10",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
+    "terser": "^5.43.1",
     "vite": "^5.4.0"
   }
 }
