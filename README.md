@@ -207,7 +207,7 @@ The application includes beautiful HTML email templates for:
 4. Test thoroughly
 5. Submit a pull request
 
-## Tasks
+## Upcoming Tasks
 
 - [ ] **Environment Configuration**
   - [ ] Move all secrets (.env) to secure vault
