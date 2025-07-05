@@ -207,6 +207,71 @@ The application includes beautiful HTML email templates for:
 4. Test thoroughly
 5. Submit a pull request
 
+## Tasks
+
+- [ ] **Environment Configuration**
+  - [ ] Move all secrets (.env) to secure vault
+  - [ ] Standardize config management across serverless and express
+  - [ ] Document required variables
+
+- [ ] **Database Migration**
+  - [ ] Replace file-based JSON storage with production database (e.g., PostgreSQL + Prisma ORM)
+  - [ ] Migrate existing subscribers, donations, newsletters data
+
+- [ ] **Admin Authentication**
+  - [ ] Hash passwords
+  - [ ] Issue JWT tokens
+  - [ ] Protect admin routes
+  - [ ] Store sessions securely
+
+- [ ] **Input Validation & Error Handling**
+  - [ ] Add comprehensive input validation and sanitation (e.g., express-validator)
+  - [ ] Implement global error-handling middleware for all API routes
+
+- [ ] **Backend Testing**
+  - [ ] Write unit & integration tests for back-end APIs with Jest + Supertest
+  - [ ] Aim for >80% coverage
+
+- [ ] **Frontend Testing**
+  - [ ] Add React Testing Library + Jest tests for key frontend components
+  - [ ] Test subscribe and donate flows
+
+- [ ] **CI/CD Pipeline**
+  - [ ] Introduce GitHub Actions pipeline
+  - [ ] Lint with ESLint
+  - [ ] Run tests
+  - [ ] Build front-end
+  - [ ] Deploy to production (Vercel / Docker)
+
+- [ ] **Dockerization**
+  - [ ] Dockerize application with multi-stage build
+  - [ ] Build for Node server and React static site
+  - [ ] Ensure environment variable injection at runtime
+
+- [ ] **Logging & Monitoring**
+  - [ ] Set up structured logging (winston/morgan)
+  - [ ] Add error monitoring (Sentry) for both server and front-end
+
+- [ ] **Security Enhancements**
+  - [ ] Rate-limit sensitive endpoints
+  - [ ] Add Helmet for HTTP headers
+  - [ ] Enable CORS config for production domain
+  - [ ] Implement reCAPTCHA for subscription/donation forms
+
+- [ ] **Frontend UX Improvements**
+  - [ ] Responsive design tweaks
+  - [ ] Accessibility (a11y) audit fixes
+  - [ ] SEO meta tags
+  - [ ] Lazy-load images
+  - [ ] Add PWA support
+
+- [ ] **Documentation**
+  - [ ] Create detailed README & developer docs
+  - [ ] Architecture overview
+  - [ ] Setup instructions
+  - [ ] New scripts documentation
+  - [ ] API contracts
+
 ## 📄 License
 
 This project is licensed under the MIT License.
