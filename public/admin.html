@@ -301,7 +301,7 @@
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:4000/api';
+        const API_BASE = 'http://localhost:4001/api';
         let isAuthenticated = false;
         
         // DOM Elements
@@ -348,9 +348,7 @@
         }
         
         // Load subscribers
-        // Replace the API_BASE line (~line 298)
-
-        // Update the loadSubscribers function (~line 328)
+        // API_BASE updated to use port 4001
         async function loadSubscribers() {
             try {
                 subscribersContainer.innerHTML = `<div class="loading">Loading...</div>`;
@@ -371,7 +369,7 @@
                 subscribersContainer.innerHTML = `
                     <div class="error">
                         Failed to load. Error: ${error.message}<br>
-                        <small>Check if server is running on port 4000</small>
+                        <small>Check if server is running on port 4001</small>
                     </div>`;
                 console.error('Fetch error:', error);
             }

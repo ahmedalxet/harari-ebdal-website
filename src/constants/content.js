@@ -21,7 +21,7 @@ export const HERO_CONTENT = {
   SUBTITLE_2: 'To The Next Generation',
   ORGANIZATION: 'Harari EBDAL Mugad',
   SCROLL_TEXT: 'Scroll for more',
-  BACKGROUND_IMAGE: '/image/shewal.jpg'
+  BACKGROUND_IMAGE: '/image/shewal.png'
 }
 
 export const ABOUT_CONTENT = {
@@ -31,7 +31,7 @@ export const ABOUT_CONTENT = {
   APPROACH_TITLE: 'Our Approach',
   APPROACH_TEXT: 'Through innovative programs and community engagement, we bridge the past and future of Harari culture.',
   CLOSING_TEXT: 'Join us in our mission to celebrate and sustain this unique cultural legacy for generations to come.',
-  IMAGE: '/image/harar.jpg',
+  IMAGE: '/image/harar_.png',
   FEATURES: [
     'Cultural events and festivals',
     'Educational workshops', 

@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 .env
+.env.backup
 node_modules/
 dist/
 
@@ -26,3 +27,5 @@ dist/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
