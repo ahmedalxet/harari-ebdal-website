@@ -6,7 +6,8 @@ import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import subscribeRouter from './routes/subscribe.js';
+import subscribeRouter from './routes/subscribe.js';import 'dotenv/config';
+
 
 // Get __dirname equivalent for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +22,7 @@ const app = express();
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 // File paths for data storage
 const DATA_DIR = './data';

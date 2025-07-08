@@ -19,7 +19,7 @@ const Footer = () => {
     { 
       name: 'Facebook', 
       icon: '📘', 
-      href: '#',
+      href: 'https://www.facebook.com/profile.php?id=61577763877530',
       hoverColor: 'hover:text-blue-500' 
     },
     { 
@@ -62,7 +62,7 @@ const Footer = () => {
     setMessage('') // Clear previous message
     
     try {
-      const response = await fetch('http://localhost:4000/api/subscribe', {
+      const response = await fetch('http://localhost:4001/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
