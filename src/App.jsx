@@ -32,7 +32,6 @@ function HomePage() {
         <Hero />
         <About />
         <Mission />
-        <Donation />
         <Contact />
       </main>
       <Footer />

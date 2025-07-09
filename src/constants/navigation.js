@@ -27,12 +27,6 @@ export const NAV_ITEMS = [
     href: '#contact',
     id: 'contact'
   },
-  {
-    label: 'Donate',
-    href: '#donate',
-    id: 'donation',
-    highlight: true
-  }
 ]
 
 export const SOCIAL_LINKS = [

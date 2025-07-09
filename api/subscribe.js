@@ -82,7 +82,7 @@ export default async function handler(req, res) {
         console.log("ℹ️ User already subscribed:", normalizedEmail);
         return res.status(200).json({
           success: true,
-          message: "You're already subscribed to our newsletter!",
+          message: "Thank You!",
           isNew: false,
           email: normalizedEmail,
         });

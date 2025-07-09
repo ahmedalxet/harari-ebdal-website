@@ -9,8 +9,7 @@ export {
   SITE_INFO, 
   HERO_CONTENT, 
   ABOUT_CONTENT, 
-  MISSION_CONTENT, 
-  DONATION_CONTENT, 
+  MISSION_CONTENT,  
   CONTACT_CONTENT 
 } from './content'
 
